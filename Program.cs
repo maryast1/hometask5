@@ -1,12 +1,9 @@
-﻿// // Задача 1: 
+﻿// Задача 2:
+// Задайте двумерный массив. 
+// Напишите программу, которая поменяет 
+// местами первую и последнюю строку массива.
 
-// Напишите программу, которая на вход принимает 
-// // позиции элемента в двумерном массиве, 
-// // и возвращает значение этого элемента 
-// // или же указание, что такого элемента нет.
-
-
-int [,] array = new int [5,5];
+int [,] array = new int [7,4];
 
 void CreateArray()
 {
@@ -30,24 +27,22 @@ void PrintArray()
     }
     
 }
-void FindElArray()
-{   
-Console.WriteLine("Какую строку будем искать? Введите число: ");
-int l = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Какой столбец будем искать? Введите число: ");
-int c = Convert.ToInt32(Console.ReadLine());
-           
-    if (l <= array.GetLength(0) - 1 && c <= array.GetLength(1) - 1)
+
+void ChangeArray ()
+{
+    for (int i = 0; i < array.GetLength(1); i++)
+    
         {
-            Console.WriteLine("Значение элемента массива - " + " " + array[l, c]);
-         }                
-            else
-            {
-                Console.WriteLine("Такого элемента нет");
-            }
-    Console.WriteLine();
-}
+            int temporary = array[0, i];
+            array[0, i] = array[array.GetLength(0)-1, i];
+            array[array.GetLength(0)-1, i] = temporary;
+        }
+    System.Console.WriteLine ();
+    System.Console.WriteLine ("Массив, где первую строчку поменяли местом с последней: ");
+} 
+    
 
 CreateArray();
-FindElArray();
+PrintArray();
+ChangeArray();
 PrintArray();
